@@ -70,18 +70,18 @@ export function Navbar() {
               Home
             </Link>
             <Link
-              to="/products"
-              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50"
-              onClick={() => setIsOpen(false)}
-            >
-              Produtos
-            </Link>
-            <Link
-              to="/categories"
+              to="/categorias"
               className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50"
               onClick={() => setIsOpen(false)}
             >
               Categorias
+            </Link>
+            <Link
+              to="/cadastrarcategorias"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-gray-50"
+              onClick={() => setIsOpen(false)}
+            >
+              Cadastrar categoria
             </Link>
           </div>
         </div>
