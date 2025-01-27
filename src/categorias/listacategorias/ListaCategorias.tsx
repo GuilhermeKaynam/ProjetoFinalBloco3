@@ -6,6 +6,7 @@ import CardCategoria from "../cardcategorias/CardCategoria";
 import { DNA } from "react-loader-spinner";
 
 function ListaCategorias() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const navigate = useNavigate();
   const [categoria, setCategoria] = useState<Categoria[]>([]);
 

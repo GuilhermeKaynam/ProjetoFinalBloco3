@@ -60,17 +60,20 @@ function FormCategoria() {
   }
 
   return (
-    <div className="container flex flex-col items-center justify-center mx-auto p-6 bg-gradient-to-b from-blue-200 to-blue-500 rounded-lg shadow-lg">
-      <h1 className="text-4xl font-bold text-white text-center my-8">
+    <div className="container flex flex-col items-center justify-center mx-auto p-8 bg-gradient-to-br from-indigo-100 via-indigo-200 to-indigo-400 rounded-3xl shadow-2xl">
+      <h1 className="text-4xl font-bold text-white text-center mb-8">
         {id ? "Editar Categoria" : "Cadastrar Categoria"}
       </h1>
 
       <form
         onSubmit={gerarNovaCategoria}
-        className="w-full max-w-md flex flex-col gap-6"
+        className="w-full max-w-md flex flex-col gap-6 bg-white p-6 rounded-xl shadow-lg"
       >
         <div className="flex flex-col gap-2">
-          <label htmlFor="nomeCategoria" className="text-white font-semibold">
+          <label
+            htmlFor="nomeCategoria"
+            className="text-indigo-800 font-semibold"
+          >
             Nome
           </label>
           <input
@@ -79,11 +82,11 @@ function FormCategoria() {
             name="nomeCategoria"
             value={categoria.nomeCategoria || ""}
             onChange={atualizarEstado}
-            className="border-2 border-blue-600 rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-gray-700"
+            className="border-2 border-indigo-600 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-gray-50 text-gray-700 transition-all duration-200 ease-in-out"
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="descricao" className="text-white font-semibold">
+          <label htmlFor="descricao" className="text-indigo-800 font-semibold">
             Descrição
           </label>
           <input
@@ -92,17 +95,23 @@ function FormCategoria() {
             name="descricao"
             value={categoria.descricao || ""}
             onChange={atualizarEstado}
-            className="border-2 border-blue-600 rounded p-3 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white text-gray-700"
+            className="border-2 border-indigo-600 rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-indigo-400 bg-gray-50 text-gray-700 transition-all duration-200 ease-in-out"
           />
         </div>
         <button
-          className="rounded bg-blue-700 hover:bg-blue-900 text-white font-bold py-3 w-full transition-all"
+          className="rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 w-full transition-all duration-300 ease-in-out shadow-lg"
           type="submit"
           disabled={isLoading}
         >
           {isLoading ? "Processando..." : id ? "Atualizar" : "Cadastrar"}
         </button>
       </form>
+      <button
+        className="mt-4 text-indigo-600 font-semibold hover:text-indigo-800"
+        onClick={retornar}
+      >
+        Voltar
+      </button>
     </div>
   );
 }

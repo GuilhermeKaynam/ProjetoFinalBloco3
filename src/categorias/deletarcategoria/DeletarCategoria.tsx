@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { RotatingLines } from "react-loader-spinner";
 import Categoria from "../../models/Categoria";
 import { buscar, deletar } from "../../services/Service";
+import { FaTrashAlt } from "react-icons/fa"; // Ícone de excluir
 
 function DeletarCategoria() {
   const navigate = useNavigate();
@@ -49,31 +50,40 @@ function DeletarCategoria() {
   }
 
   if (!categoria.descricao) {
-    return <p>Categoria não encontrada.</p>;
+    return (
+      <p className="text-center text-lg font-semibold text-gray-700">
+        Categoria não encontrada.
+      </p>
+    );
   }
 
   return (
-    <div className="container w-1/3 mx-auto">
-      <h1 className="text-4xl text-center my-4">Deletar categoria</h1>
-      <p className="text-center font-semibold mb-4">
+    <div className="container w-1/2 mx-auto py-12 bg-gradient-to-br from-indigo-50 to-white rounded-xl shadow-xl">
+      <h1 className="text-4xl text-center font-semibold text-indigo-800 mb-6">
+        Deletar Categoria
+      </h1>
+      <p className="text-center font-semibold mb-6 text-gray-700">
         Você tem certeza de que deseja apagar a categoria a seguir?
       </p>
-      <div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
-        <header className="py-2 px-6 bg-indigo-600 text-white font-bold text-2xl">
-          Categoria
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+        <header className="py-4 px-6 bg-red-600 text-white font-semibold text-xl rounded-t-lg flex items-center justify-between">
+          <div className="flex items-center">
+            <FaTrashAlt className="mr-2 text-2xl" />
+            <span>Categoria</span>
+          </div>
         </header>
-        <p className="p-8 text-3xl bg-slate-200 h-full">
+        <p className="p-8 text-2xl text-center text-gray-800 bg-slate-50">
           {categoria.descricao}
         </p>
-        <div className="flex">
+        <div className="flex gap-4 p-6">
           <button
-            className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2"
+            className="w-full bg-gray-300 hover:bg-gray-400 text-gray-800 flex items-center justify-center py-3 rounded-lg shadow-md transition-all duration-300"
             onClick={retornar}
           >
             Não
           </button>
           <button
-            className="w-full text-black bg-blue-400 hover:bg-indigo-600 flex items-center justify-center"
+            className="w-full bg-red-500 hover:bg-red-700 text-white flex items-center justify-center py-3 rounded-lg shadow-md transition-all duration-300"
             onClick={deletarCategoria}
           >
             {isLoading ? (
