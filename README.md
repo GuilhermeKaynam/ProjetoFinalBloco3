@@ -1,50 +1,74 @@
-# React + TypeScript + Vite
+# Farmácia — Front-end (Projeto Final Bloco 3)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Front-end de uma farmácia fictícia desenvolvido como projeto final do Bloco 3 (React) do bootcamp Generation Brasil. Apresenta uma página institucional e um CRUD de categorias de produtos integrado a uma API REST via Axios.
 
-Currently, two official plugins are available:
+## Objetivo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Aplicar os fundamentos de React estudados no bloco — componentização, rotas, estado, formulários controlados e consumo de API — em uma aplicação com tema de negócio.
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Página inicial** institucional com apresentação, depoimentos de exemplo, horários de funcionamento e contato.
+- **Categorias**: listagem em cards, cadastro, edição e exclusão com confirmação.
+- **Feedback de carregamento** com React Loader Spinner.
+- Navbar e footer compartilhados entre as páginas.
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologias
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- React 18 + TypeScript
+- Vite
+- React Router 7
+- Axios
+- Tailwind CSS
+- Lucide React
+
+## Arquitetura
+
+| Pasta | Responsabilidade |
+|---|---|
+| `src/services/Service.ts` | Instância do Axios (`http://localhost:8080/`) e funções `buscar`, `cadastrar`, `atualizar`, `deletar` |
+| `src/models` | Interfaces `Categoria` e `Produtos` |
+| `src/categorias` | Lista, card, formulário e exclusão de categorias |
+| `src/pages/home` | Página inicial |
+| `src/components` | Navbar e footer |
+
+## Estrutura de diretórios
+
+```
+ProjetoFinalBloco3/
+└── src/
+    ├── categorias/
+    │   ├── listacategorias/
+    │   ├── cardcategorias/
+    │   ├── formcategorias/
+    │   └── deletarcategoria/
+    ├── components/     # navbar, footer
+    ├── models/         # Categoria, Produtos
+    ├── pages/home/
+    ├── services/       # Service.ts
+    └── App.tsx         # rotas
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Como executar localmente
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### Pré-requisitos
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+- Node.js 18+
+- Uma API REST rodando em `http://localhost:8080` com o recurso `/categorias` (campos `id`, `nomeCategoria`, `descricao`)
+
+### Passos
+
+```bash
+git clone https://github.com/GuilhermeKaynam/ProjetoFinalBloco3.git
+cd ProjetoFinalBloco3
+yarn          # ou npm install
+yarn dev      # ou npm run dev
 ```
+
+Acesse `http://localhost:5173`. Sem a API, a página inicial funciona normalmente, mas a listagem de categorias fica vazia.
+
+## Melhorias futuras
+
+- Mover a URL da API para a variável de ambiente `VITE_API_URL`.
+- Implementar o CRUD de produtos (o modelo já existe em `src/models`).
+- Publicar a API de farmácia correspondente.
